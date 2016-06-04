@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; }
-    </style>
+
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
+
+
+
+
+  <div>
+    <input  />
+
+       <ul>
+         <li> filte1</li>
+         <li> filte2</li>
+         <li> filte3</li>
+         <li> filte4</li>
+
+
+       </ul>
+
+  </div>
+
+
     <div id="map"></div>
-      <script async defer
-      src="http://maps.google.cn/maps/api/js?key=AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0">
-    </script>
-    <script type="text/javascript">
-         
 
+    <script type="text/javascript" src ="js/gmap.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0&callback=initMap">
     </script>
-  
+    <script src="js/knockout-3.3.0.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="js/jquerymin.js" type="text/javascript" charset="utf-8" async defer></script>
   </body>
+  <!-- google map api key: AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0 -->
 </html>
-
