@@ -5,7 +5,8 @@
 
        map = new google.maps.Map(document.getElementById('map'), {
               center: latLng,
-              zoom: 15
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
 
        });
 
@@ -21,8 +22,7 @@
       'south west of the nearest large town, Alice Springs; 450&#160;km '+
       '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
       'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+      'Aboriginal people of the area. It has many springs, waterholes, '+
       'rock caves and ancient paintings. Uluru is listed as a World '+
       'Heritage Site.</p>'+
       '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
@@ -43,13 +43,30 @@
 		       });
  
 	 marker.setMap(map);
+
+
      marker.addListener('click', function() {
 
                   infowindow.open(map, marker);
-                  
+
              });
 
-        }
+          // Create the search box and link it to the UI element.
+	 var input = document.getElementById('input');
+	 var searchBox = new google.maps.places.SearchBox(input);
+	 map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		  // Bias the SearchBox results towards current map's viewport.
+	 map.addListener('bounds_changed', function() {
+		   searchBox.setBounds(map.getBounds());
+		    console.log("searchbox_bounds-changed");
+		  });
+
+
+
+
+
+        } // init Map
 
 
 

@@ -1,2 +1,22 @@
- html, body { height: 100%; margin: 0; padding: 0; }
- #map { height: 100%; }
+html, body { height: 100%; margin: 0; padding: 0;  }
+
+
+#filter-container{
+
+	width:28%;
+	background-color: black;
+	color: white;
+} 
+
+.filter-list{
+
+	list-style-type: none;
+}
+#map { height: 100%; }
+
+.container{
+
+	display:flex;
+	flex-wrap:flex;
+}
+
