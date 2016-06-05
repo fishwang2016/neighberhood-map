@@ -16,15 +16,25 @@ function ModelView(){
             	re = new  RegExp( pattern ,"i") ;
             	self.locations().forEach(function(location){
 
-            		location.show(ko.observable(true));// not  location.show = ko.observable(true)
+            		console.log(location.placeName.match(re)===null);
+
+            		if (location.placeName.match(re)===null){
+
+            			 location.show(ko.observable(false));// not  location.show = ko.observable(true
+                          console.log(location.show + "set to false")
+            		}else{
+
+            			location.show(ko.observable(true));// not  location.show = ko.observable(true
+            		}
 
             		});
-            	console.log(self.locations());
+
+
             	};
 
             }
 
-          
+
 
 ko.applyBindings(new ModelView());
 
