@@ -1,22 +1,29 @@
-html, body { height: 100%; margin: 0; padding: 0;  }
+html, body { height:100%;margin: 0; padding: 0;  }
+.container{
 
+	height:100%;
 
+	width:100%;
+}
 #filter-container{
 
-	width:28%;
+	width:300px;
 	background-color: black;
 	color: white;
+	height:100%;
 } 
 
 .filter-list{
 
+
 	list-style-type: none;
-}
-#map { height: 100%; }
 
-.container{
-
-	display:flex;
-	flex-wrap:flex;
 }
+
+#map {
+	height:100%;
+ display:block;
+
+
+ }
 
