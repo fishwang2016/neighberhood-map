@@ -25,6 +25,7 @@ function ModelView(){
             		}else{
 
             			location.show(ko.observable(true));// not  location.show = ko.observable(true
+                                    // it looks this function doesn't work well.
             		}
 
             		});
