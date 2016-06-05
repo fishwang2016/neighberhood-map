@@ -5,9 +5,9 @@ function ModelView(){
 
             self.list_filter= ko.observable();
             self.textReceived = ko.observable();
-            self.locations = ko.observableArray([{placeName:"Center",display:ko.observable(true)},
-            	 {placeName:"Timsa",display:ko.observable(true)},{placeName:"Mongko",display:ko.observable(true)},
-            	 {placeName:"Shatian", display:ko.observable(false)}]);
+            self.locations = ko.observableArray([{placeName:"Center",show:ko.observable(true)},
+            	 {placeName:"Timsa",show:ko.observable(false)},{placeName:"Mongko",show:ko.observable(true)},
+            	 {placeName:"Shatian", show:ko.observable(false)}]);
 
             self.filter = function(data){
 
@@ -16,16 +16,15 @@ function ModelView(){
             	re = new  RegExp( pattern ,"i") ;
             	self.locations().forEach(function(location){
 
-            		if (location.placeName.match(re)){
-            			console.log(re);
-            			console.log(location);
-            		    return false;
-            		}
-            	});
+            		location.show(ko.observable(true));// not  location.show = ko.observable(true)
+
+            		});
+            	console.log(self.locations());
+            	};
 
             }
 
-          }
+          
 
 ko.applyBindings(new ModelView());
 
