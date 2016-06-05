@@ -11,9 +11,10 @@
 
 
            <div id="filter-container">
-            <input id ="input" data-bind="textInput: me, event: { keyup: filter }" />
+            <input id ="input" data-bind="textInput: textReceived, event: { keyup: filter }" />
                <ul  class= "filter-list" data-bind="foreach:locations">
-                 <li data-bind="text:placeName"> </li>
+                 <li data-bind="visible: display"> </li>
+                     <span data-bind ="text:placeName"></span>
 
                </ul>
 
