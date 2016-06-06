@@ -12,7 +12,7 @@
     <div class="container">
 
           <div id="filter-container">
-            <input id ="input" data-bind="textInput: textReceived, event: { keyup: filter }" />
+            <input id ="input" onkeyup="geocodeAddress()" data-bind="textInput: textReceived, event: { keyup: filter }" />
                <ul  class= "filter-list" data-bind="foreach:locations">
                  <li class="list-wrap" data-bind="visible: show"> 
                      <span class ="list-text" data-bind ="text:placeName"></span>
