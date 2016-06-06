@@ -13,7 +13,7 @@ function ModelView(){
             self.list_filter= ko.observable();
             self.textReceived = ko.observable();
             self.locations = ko.observableArray([{placeName:"Central, Hong Kong",show:ko.observable(true)},
-            	 {placeName:"Hong Kong University",show:ko.observable(false)},
+            	 {placeName:"The University of Hong Kong",show:ko.observable(false)},
                    {placeName:"Lan Kwai Fong",show:ko.observable(true)},
             	 {placeName:"Sun Yat Sen Memorial Park", show:ko.observable(true)},
                    {placeName:"International Finance Center", show:ko.observable(true)},
