@@ -1,8 +1,15 @@
-var markers;
+/*
+* This file initialize the map ,markers and marker filter
+* 
+*
+*/
+
+var markers; // initialize a global markers array to store markers for future use in function
+
+/* initialize map*/
 function initMap(){
 
 
-  console.log("initizalizing...")
 
       var myLatLng = { lat:22.2799907,lng:114.15879829999994};
 
@@ -27,8 +34,6 @@ function initMap(){
          ]
 
         var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
-            console.log(addressList);
-            console.log($(".list-wrap:visible"));
 
         markers =[];
 
@@ -38,10 +43,11 @@ function initMap(){
 
                   var marker = new google.maps.Marker({
                          map: map,
-                         position: {lat: geo[key].lat, lng:geo[key].lng  },
-                                          title:key
+                         title: key,
+
+                         position: {lat: geo[key].lat, lng:geo[key].lng  }
                                         });
-                   markers.push({geo:marker});
+                   markers.push({marker});
 
             }
 
@@ -49,13 +55,30 @@ function initMap(){
         });
          
 }
+/*Marker filter*/
 
 function markerFilter(){
 
-   console.log("this is filter");
+   var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
 
-   console.log(markers);
-}
+
+   for (var i =0 ;i < markers.length; i++){
+        console.log(markers[i].marker.title);
+
+       if($.inArray(markers[i].marker.title, addressList) !== -1){
+
+          markers[i].marker.setVisible(true);
+
+       }else{
+          
+          markers[i].marker.setVisible(false);
+
+       }
+
+   };
+
+   }
+
 
 
 
