@@ -17,7 +17,6 @@ function ModelView(){
                    {placeName:"Lan Kwai Fong",show:ko.observable(true)},
             	 {placeName:"Sun Yat Sen Memorial Park", show:ko.observable(true)},
                    {placeName:"International Finance Center", show:ko.observable(true)},
-                   {placeName:"Victoria Peak", show:ko.observable(true)},
                    {placeName:"HIGH WEST", show:ko.observable(true)},
                    {placeName:"WAN CHAI", show:ko.observable(true)},
                    {placeName:"Lung Fu SHAN", show:ko.observable(true)}
