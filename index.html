@@ -12,13 +12,14 @@
     <div class="container">
 
           <div id="filter-container">
-            <input id ="input" onkeyup="geocodeAddress()" data-bind="textInput: textReceived, event: { keyup: filter }" />
                <ul  class= "filter-list" data-bind="foreach:locations">
                  <li class="list-wrap" data-bind="visible: show"> 
                      <span class ="list-text" data-bind ="text:placeName"></span>
                  </li>
 
                </ul>
+           <input id ="input"  data-bind="textInput: textReceived, event: { keyup: filter }" />
+
 
           </div>
 
@@ -36,17 +37,34 @@
 
 
 
-    <script type="text/javascript" src ="js/gmap.js"></script>
 
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0&callback=initMap">
     </script>
 
-    <script src="js/jquerymin.js" type="text/javascript"  async defer></script>
+    <script src="js/jquerymin.js" type="text/javascript"  ></script>
     <script src="js/knockout-3.3.0.js" type="text/javascript" ></script>
 
 
     <script src ="js/app.js"> </script>
+    <script async type="text/javascript" src ="js/gmap.js"></script>
+
+    <script>
+    
+       document.getElementById("input").addEventListener("keyup",function(){
+
+        console.log("hi");
+        test();
+        makeMarker();
+
+       });
+      
+
+
+
+ 
+    </script>
+
 
 
   </body>
