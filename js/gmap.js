@@ -1,8 +1,15 @@
+/*
+* This file initialize the map ,markers and marker filter
+* 
+*
+*/
 
+var markers; // initialize a global markers array to store markers for future use in function
+
+/* initialize map*/
 function initMap(){
 
 
-  console.log("initizalizing...")
 
       var myLatLng = { lat:22.2799907,lng:114.15879829999994};
 
@@ -10,7 +17,6 @@ function initMap(){
     
              zoom: 14,
              center: myLatLng
-
 
           });    
 
@@ -28,10 +34,8 @@ function initMap(){
          ]
 
         var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
-            console.log(addressList);
-            console.log($(".list-wrap:visible"));
 
-        var markers =[];
+        markers =[];
 
         geoList.forEach(function(geo){
 
@@ -39,41 +43,45 @@ function initMap(){
 
                   var marker = new google.maps.Marker({
                          map: map,
-                         position: {lat: geo[key].lat, lng:geo[key].lng  },
-                                          title:key
+                         title: key,
+
+                         position: {lat: geo[key].lat, lng:geo[key].lng  }
                                         });
-                   markers.push({geo:marker});
+                   markers.push({marker});
 
             }
 
  
         });
-
-        function test(){
-
-          console.log("test");
-        }
-
          
 }
+/*Marker filter*/
+
+function markerFilter(){
+
+   var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
+
+
+   for (var i =0 ;i < markers.length; i++){
+        console.log(markers[i].marker.title);
+
+       if($.inArray(markers[i].marker.title, addressList) !== -1){
+
+          markers[i].marker.setVisible(true);
+
+       }else{
+          
+          markers[i].marker.setVisible(false);
+
+       }
+
+   };
+
+   }
 
 
 
-function makeMarker(resultMap){
 
-        var addresses =["Central, Hong Kong", "The University of Hong Kong", 
-                         "Lan Kwai Fong", "Sun Yat Sen Memorial Park", 
-                         "International Finance Center", "HIGH WEST", 
-                         "WAN CHAI", "Lung Fu SHAN"]
-
-
-       
-
-
-
-
-                      
-} //makeMarker
 
 
  

@@ -47,5 +47,4 @@ function ModelView(){
 
 ko.applyBindings(new ModelView());
 
-
  // input change -> filter  on slected -> marker change
