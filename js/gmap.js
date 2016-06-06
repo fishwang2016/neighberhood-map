@@ -1,4 +1,4 @@
-
+var markers;
 function initMap(){
 
 
@@ -10,7 +10,6 @@ function initMap(){
     
              zoom: 14,
              center: myLatLng
-
 
           });    
 
@@ -31,7 +30,7 @@ function initMap(){
             console.log(addressList);
             console.log($(".list-wrap:visible"));
 
-        var markers =[];
+        markers =[];
 
         geoList.forEach(function(geo){
 
@@ -48,32 +47,18 @@ function initMap(){
 
  
         });
-
-        function test(){
-
-          console.log("test");
-        }
-
          
+}
+
+function markerFilter(){
+
+   console.log("this is filter");
+
+   console.log(markers);
 }
 
 
 
-function makeMarker(resultMap){
-
-        var addresses =["Central, Hong Kong", "The University of Hong Kong", 
-                         "Lan Kwai Fong", "Sun Yat Sen Memorial Park", 
-                         "International Finance Center", "HIGH WEST", 
-                         "WAN CHAI", "Lung Fu SHAN"]
-
-
-       
-
-
-
-
-                      
-} //makeMarker
 
 
  
