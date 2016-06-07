@@ -4,8 +4,10 @@
  *
  */
 var markers; // initialize a global markers array to store markers for future use in function
-var blue_icon_url = "gmarkers/blue_MarkerO.png"
-var red_icon_url = "gmarkers/red_MarkerO.png"
+var blue_icon_url = "gmarkers/blue_MarkerO.png";
+var red_icon_url = "gmarkers/red_MarkerO.png";
+
+"use strict";
 
 /* initialize map*/
 function initMap() {
@@ -64,11 +66,8 @@ function initMap() {
             }
         }
 
-    ]
+    ];
 
-    var addressList = $.map($(".list-wrap:visible"), function(element) {
-        return $(element).text().trim()
-    });
 
     markers = [];
 
@@ -87,21 +86,19 @@ function initMap() {
                     lng: geo[key].lng
                 }
             });
-            markers.push({
-                marker
-            });
-            marker.addListener('click', bounce);
-            /* function, Marker bouncing animation*/
 
+            markers.push({marker});
 
-            function bounce() {
+              /* function, Marker bouncing animation*/
+
+            marker.addListener('click', function () {
 
                 marker.setAnimation(google.maps.Animation.BOUNCE);
                 setTimeout(function() {
-                    marker.setAnimation(null)
-                }, 2000);
+                    marker.setAnimation(null);
+                }, 2000);});
 
-            } // bounce end
+            // bounce end
 
         } // for in end
 
@@ -116,7 +113,7 @@ function initMap() {
 function markerFilter() {
 
     var addressList = $.map($(".list-wrap:visible"), function(element) {
-        return $(element).text().trim()
+        return $(element).text().trim();
     });
 
     for (var i = 0; i < markers.length; i++) {
@@ -129,7 +126,7 @@ function markerFilter() {
             markers[i].marker.setVisible(false);
         }
 
-    };
+    }
 
 }
 
@@ -149,7 +146,7 @@ $(".list-wrap").mouseover(function() {
         }
     }
 
-})
+});
 
 /*Mouse Out*/
 $(".list-wrap").mouseout(function() {
@@ -159,14 +156,13 @@ $(".list-wrap").mouseout(function() {
     for (var i = 0; i < markers.length; i++) {
 
         if (markers[i].marker.title === itemText) {
-           markers[i].marker.setAnimation(null)
+            markers[i].marker.setAnimation(null);
 
             markers[i].marker.setVisible(false);
 
             markers[i].marker.icon = red_icon_url;
 
             markers[i].marker.setVisible(true);
-
         }
     }
 
@@ -186,12 +182,7 @@ $(".list-wrap").click(function() {
 
           }
 
-
-
         } // bounce
 
-
     }
-
-
 });
