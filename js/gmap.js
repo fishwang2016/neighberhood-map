@@ -3,7 +3,6 @@
 * 
 *
 */
-
 var markers; // initialize a global markers array to store markers for future use in function
 var blue_icon_url ="gmarkers/blue_MarkerO.png"
 var red_icon_url= "gmarkers/red_MarkerO.png"
@@ -11,12 +10,8 @@ var red_icon_url= "gmarkers/red_MarkerO.png"
 /* initialize map*/
 function initMap(){
 
-
-
       var myLatLng = { lat:22.2799907,lng:114.15879829999994};
-
       var map = new google.maps.Map(document.getElementById('map'), {
-    
              zoom: 14,
              center: myLatLng
 
@@ -53,8 +48,6 @@ function initMap(){
                    markers.push({marker});
 
             }
-
- 
         });
          
 }
@@ -98,13 +91,11 @@ function markerFilter(){
 
 /*Mouse Out*/
  $(".list-wrap").mouseout(function(){ 
-
-      
+ 
       var itemText = ($(this).text().trim());// get content from selected element 
        
       for (var i =0 ;i < markers.length; i++){
 
-        
           if(markers[i].marker.title===itemText) {
              
               markers[i].marker.setVisible(false);
