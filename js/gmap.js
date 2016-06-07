@@ -3,18 +3,15 @@
 * 
 *
 */
-
 var markers; // initialize a global markers array to store markers for future use in function
+var blue_icon_url ="gmarkers/blue_MarkerO.png"
+var red_icon_url= "gmarkers/red_MarkerO.png"
 
 /* initialize map*/
 function initMap(){
 
-
-
       var myLatLng = { lat:22.2799907,lng:114.15879829999994};
-
       var map = new google.maps.Map(document.getElementById('map'), {
-    
              zoom: 14,
              center: myLatLng
 
@@ -44,14 +41,13 @@ function initMap(){
                   var marker = new google.maps.Marker({
                          map: map,
                          title: key,
+                         icon: red_icon_url,
 
                          position: {lat: geo[key].lat, lng:geo[key].lng  }
                                         });
                    markers.push({marker});
 
             }
-
- 
         });
          
 }
@@ -60,24 +56,59 @@ function initMap(){
 function markerFilter(){
 
    var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
-
-
+  
    for (var i =0 ;i < markers.length; i++){
-        console.log(markers[i].marker.title);
-
+        //console.log(markers[i].marker.title);
+        console.log(markers[i].marker.icon);
        if($.inArray(markers[i].marker.title, addressList) !== -1){
-
           markers[i].marker.setVisible(true);
-
-       }else{
-          
+          //markers[i].marker.icon = blue_icon_url;
+       }else{     
           markers[i].marker.setVisible(false);
-
        }
 
    };
 
    }
+
+  /*Mouse Over Marker change colors*/ 
+  $(".list-wrap").mouseover(function(){ 
+     
+      var itemText = ($(this).text().trim());// get content from selected element
+      for (var i =0 ;i < markers.length; i++){
+
+           if(markers[i].marker.title===itemText) {
+             
+              markers[i].marker.setVisible(false);
+
+              markers[i].marker.icon = blue_icon_url;
+
+              markers[i].marker.setVisible(true);
+           }
+       }
+
+    })
+
+/*Mouse Out*/
+ $(".list-wrap").mouseout(function(){ 
+ 
+      var itemText = ($(this).text().trim());// get content from selected element 
+       
+      for (var i =0 ;i < markers.length; i++){
+
+          if(markers[i].marker.title===itemText) {
+             
+              markers[i].marker.setVisible(false);
+
+              markers[i].marker.icon = red_icon_url;
+
+              markers[i].marker.setVisible(true);
+
+              }
+            }
+
+ });
+
 
 
 
