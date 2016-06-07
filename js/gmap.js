@@ -63,7 +63,7 @@ function markerFilter(){
 
 
    for (var i =0 ;i < markers.length; i++){
-        console.log(markers[i].marker.title);
+        //console.log(markers[i].marker.title);
 
        if($.inArray(markers[i].marker.title, addressList) !== -1){
 
