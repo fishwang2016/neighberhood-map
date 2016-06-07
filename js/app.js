@@ -6,7 +6,7 @@
 
 */
 
-
+/*Model View*/
 function ModelView(){
 
             var self = this;
@@ -23,6 +23,8 @@ function ModelView(){
 
                    ]);
 
+            /*filter address list*/
+  
             self.filter = function(data){
 
             	//console.log(data.textReceived());
@@ -47,4 +49,13 @@ function ModelView(){
 
 ko.applyBindings(new ModelView());
 
- // input change -> filter  on slected -> marker change
+
+
+
+/*listen for input text change and filter markers*/
+document.getElementById("input").addEventListener("keyup",function(){
+
+        markerFilter();  // function markerFilter is in file gmap.js
+
+       });
+
