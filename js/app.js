@@ -59,15 +59,3 @@ document.getElementById("input").addEventListener("keyup",function(){
 
        });
 
-
-document.getElementById("filter-container").addEventListener("mouseenter",function(){
-
-        console.log("mouse enter");  // function markerFilter is in file gmap.js
-
-       });
-
-      
-
-
-
- // input change -> filter  on slected -> marker change
