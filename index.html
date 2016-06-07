@@ -13,8 +13,9 @@
 
           <div id="filter-container">
                <ul  class= "filter-list" data-bind="foreach:locations">
-                 <li class="list-wrap" data-bind="visible: show"> 
-                     <span class ="list-text" data-bind ="text:placeName"></span>
+                 <li id="" class="list-wrap"   data-bind="visible: show ,attr: { id: 'list_' + $index() }"> 
+                     <span class ="list-text" 
+                     data-bind ="text:placeName"></span>
                  </li>
 
                </ul>

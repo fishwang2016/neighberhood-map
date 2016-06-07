@@ -5,6 +5,8 @@
 */
 
 var markers; // initialize a global markers array to store markers for future use in function
+var blue_icon_url ="gmarkers/blue_MarkerA.png"
+var red_icon_url= "gmarkers/red_MarkerO.png"
 
 /* initialize map*/
 function initMap(){
@@ -44,6 +46,7 @@ function initMap(){
                   var marker = new google.maps.Marker({
                          map: map,
                          title: key,
+                         icon: red_icon_url,
 
                          position: {lat: geo[key].lat, lng:geo[key].lng  }
                                         });
@@ -61,13 +64,16 @@ function markerFilter(){
 
    var addressList =  $.map($(".list-wrap:visible"),function(element){return $(element).text().trim()});
 
-
+  
    for (var i =0 ;i < markers.length; i++){
         //console.log(markers[i].marker.title);
+        console.log(markers[i].marker.icon);
 
        if($.inArray(markers[i].marker.title, addressList) !== -1){
 
           markers[i].marker.setVisible(true);
+          //markers[i].marker.icon = blue_icon_url;
+
 
        }else{
           
@@ -78,6 +84,63 @@ function markerFilter(){
    };
 
    }
+
+  /*Mouse Enter*/ 
+
+
+
+  $(".list-wrap").mouseover(function(){ 
+      var markerLength= markers.length;
+      var itemText = ($(this).text().trim());// get content from selected element
+      for (var i =0 ;i < markerLength; i++){
+
+           if(markers[i].marker.title===itemText) {
+              console.log("****************");
+              console.log(markers[i].marker.icon);
+              markers[i].marker.setVisible(false);
+
+              markers[i].marker.icon = blue_icon_url;
+
+              markers[i].marker.setVisible(true);
+
+              console.log("****************");
+              console.log(markers[i].marker.icon);
+              //markers[i].marker.icon = blue_icon_url;
+
+
+           }
+    
+       }
+
+    })
+
+
+ $(".list-wrap").mouseout(function(){ 
+
+      var markerLength= markers.length;
+      var itemText = ($(this).text().trim());// get content from selected element 
+       
+      for (var i =0 ;i < markerLength; i++){
+
+        
+          if(markers[i].marker.title===itemText) {
+             
+              markers[i].marker.setVisible(false);
+
+              markers[i].marker.icon = red_icon_url;
+
+              markers[i].marker.setVisible(true);
+
+              
+
+           
+
+              }
+            }
+
+
+ });
+
 
 
 

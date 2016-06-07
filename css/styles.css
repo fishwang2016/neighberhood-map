@@ -23,6 +23,15 @@ html, body { height:100%;margin: 0; padding: 0;  }
   
 } 
 
+.list-wrap{
+  padding:2px 5px;
+}
+.list-wrap:hover{
+
+  background-color:blue;
+
+
+}
 #input{
 	height:30px;
 	width:95%;

@@ -49,12 +49,23 @@ function ModelView(){
 
 ko.applyBindings(new ModelView());
 
+
+
+
 /*listen for input text change and filter markers*/
 document.getElementById("input").addEventListener("keyup",function(){
 
         markerFilter();  // function markerFilter is in file gmap.js
 
        });
+
+
+document.getElementById("filter-container").addEventListener("mouseenter",function(){
+
+        console.log("mouse enter");  // function markerFilter is in file gmap.js
+
+       });
+
       
 
 
