@@ -107,17 +107,19 @@ function initMap() {
 
     /* list item on click*/
 
+
    $(".list-wrap").click(function() {
 
-    var itemText = ($(this).text().trim()); // get content from selected element
+    var itemText = ($(this).text().trim());
+    console.log(itemText);
+     // get content from selected element
+
     //console.log(infowindow.content);// debug
     for (var i = 0; i < markers.length; i++) {
 
         if (markers[i].marker.title === itemText) {
 
-
             bounceAnimation(markers[i].marker)
-
 
         } // bounce
 
@@ -126,43 +128,74 @@ function initMap() {
 
    /*get data*/
 
-   function getData(){
+
+   function getData(marker){
     // wikipedia appi example
-    var url ="https://en.wikipedia.org/w/api.php?"+
-              "limit=1&namespace=0&format=json&action=opensearch";
+    console.log("trying to get data ...")
 
-    c= $.ajax({
-      dataType: "json",
-      url: url,
-      data: "search=Hong Kong",
-    });
+     var url = "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json";
+     
+     var c = $.ajax({ 
+        data:"search="+marker.title,
+        url: url,
+        async: false,
+        dataType:'jsonp',
+        success: function(data){
 
-     console.log(c) ;
+            console.log("get data!!!")
+            console.log(data);
+            console.log(typeof data);   
+         
+            var title = "<h1>"+data[1]+"</h1>";
+            var description = "<p>"+data[2]+"</p><br><hr>"
+            var link  = '<a href="'+data[3]+'">Source from Wikipedia</a>'
+            var content = title+description+link;
+
+            openinfoWindow(marker,content);
+                            //   <h1></h1><br>
+                            // <hr><br>
+                            // <p></p>
+                            // <br>
+                            // <a href="">Source from Wikipedia</a>
+              },//success
+         error:function(){
+
+
+
+             openinfoWindow(marker,"No data available for this place yet,please check later.");
+
+
+         }
+        });// end of ajax
 
 
 
    }
 
+
+
    function bounceAnimation(marker){
-            getData();
-
-
+        
             marker.setAnimation(google.maps.Animation.BOUNCE); // google.maps is a global object
             setTimeout(function() {
                     marker.setAnimation(null);
      
                 }, 1500);
 
-            openinfoWindow(marker);
+            getData(marker);
 
    }
 
    /*o open infoWindow*/
 
-   function openinfoWindow(marker){
+   function openinfoWindow(marker,content){
+     
+        console.log(content);
 
-        infowindow.setContent(marker.title);
+        infowindow.setContent(content);
+
         infowindow.open(map, marker);
+     
 
      }
 
