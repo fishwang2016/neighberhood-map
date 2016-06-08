@@ -96,7 +96,7 @@ function initMap() {
                 marker.setAnimation(google.maps.Animation.BOUNCE);
                 setTimeout(function() {
                     marker.setAnimation(null);
-                }, 2000);});
+                }, 1500);});
 
             // bounce end
 
@@ -118,7 +118,6 @@ function markerFilter() {
 
     for (var i = 0; i < markers.length; i++) {
         //console.log(markers[i].marker.title);
-        console.log(markers[i].marker.icon);
         if ($.inArray(markers[i].marker.title, addressList) !== -1) {
             markers[i].marker.setVisible(true);
             //markers[i].marker.icon = blue_icon_url;
