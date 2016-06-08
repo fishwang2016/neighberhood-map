@@ -6,12 +6,17 @@
 
    <link rel="stylesheet" type="text/css" href="css/styles.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquerymin.js" type="text/javascript"  ></script>
+
+
   </head>
   <body>
 
     <div class="container">
 
           <div id="filter-container">
+               <input id ="input"  data-bind="textInput: textReceived, event: { keyup: filter }" />
+
                <ul  class= "filter-list" data-bind="foreach:locations">
                  <li id="" class="list-wrap"   data-bind="visible: show ,attr: { id: 'list_' + $index() }"> 
                      <span class ="list-text" 
@@ -19,7 +24,6 @@
                  </li>
 
                </ul>
-           <input id ="input"  data-bind="textInput: textReceived, event: { keyup: filter }" />
 
 
           </div>
@@ -32,16 +36,16 @@
     </div>
 
 
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0&callback=initMap">
-    </script>
+ 
 
-    <script src="js/jquerymin.js" type="text/javascript"  ></script>
     <script src="js/knockout-3.3.0.js" type="text/javascript" ></script>
 
 
     <script src ="js/app.js"> </script>
     <script async type="text/javascript" src ="js/gmap.js"></script>
+    <script  
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6uNbhzjuWKRQqsdjb8kGyviA4hRENbM0&callback=initMap">
+    </script>
 
   
 

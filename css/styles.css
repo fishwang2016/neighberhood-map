@@ -1,54 +1,44 @@
-html, body { height:100%;margin: 0; padding: 0;  }
-.container{
-
-	height:100%;
-
-	width:100%;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-
-#filter-container{
-
-  position: absolute;
-  color:white;
-  top: 50px;
-  left: 1%;
-  z-index: 5;
-  background-color: black;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: left;
-  line-height: 30px;
-  padding-left: 3;
-  opacity: 0.95;
-  
-} 
-
-.list-wrap{
-  padding:2px 5px;
+.container {
+    height: 100%;
+    width: 100%;
 }
-.list-wrap:hover{
-
-  background-color:blue;
-  cursor: pointer;
-
-
+#filter-container {
+    position: absolute;
+    color: white;
+    top: 50px;
+    left: 1%;
+    z-index: 5;
+    background-color: black;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: left;
+    line-height: 30px;
+    padding-left: 3;
+    opacity: 0.95;
 }
-#input{
-	height:30px;
-	width:95%;
-	font-size:20px;
+.list-wrap {
+    padding: 2px 5px;
 }
-
-.filter-list{
-
-	list-style-type: none;
-	padding-left: 0;
+.list-wrap:hover {
+    background-color: #6866bb;
+    cursor: pointer;
 }
-
+#input {
+    height: 30px;
+    width: 95%;
+    font-size: 20px;
+}
+.filter-list {
+    list-style-type: none;
+    padding-left: 0;
+}
 #map {
-	height:100%;
- display:block;
-
-
- }
-
+    height: 100%;
+    display: block;
+}
