@@ -71,6 +71,11 @@ function initMap() {
 
     markers = [];
 
+    var infowindow = new google.maps.InfoWindow({
+    content: "Hello , Im info."
+    });
+
+
     geoList.forEach(function(geo) {
 
         for (var key in geo) {
@@ -80,7 +85,7 @@ function initMap() {
                 title: key,
                 icon: red_icon_url,
                 animation: google.maps.Animation.DROP,
-
+ 
                 position: {
                     lat: geo[key].lat,
                     lng: geo[key].lng
@@ -92,17 +97,76 @@ function initMap() {
               /* function, Marker bouncing animation*/
 
             marker.addListener('click', function () {
-
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-                setTimeout(function() {
-                    marker.setAnimation(null);
-                }, 1500);});
-
-            // bounce end
+                bounceAnimation(marker);
+            
+             });
 
         } // for in end
 
     }); // forEach end
+
+    /* list item on click*/
+
+   $(".list-wrap").click(function() {
+
+    var itemText = ($(this).text().trim()); // get content from selected element
+    //console.log(infowindow.content);// debug
+    for (var i = 0; i < markers.length; i++) {
+
+        if (markers[i].marker.title === itemText) {
+
+
+            bounceAnimation(markers[i].marker)
+
+
+        } // bounce
+
+    }
+});// list item on click
+
+   /*get data*/
+
+   function getData(){
+    // wikipedia appi example
+    var url ="https://en.wikipedia.org/w/api.php?"+
+              "limit=1&namespace=0&format=json&action=opensearch";
+
+    c= $.ajax({
+      dataType: "json",
+      url: url,
+      data: "search=Hong Kong",
+    });
+
+     console.log(c) ;
+
+
+
+   }
+
+   function bounceAnimation(marker){
+            getData();
+
+
+            marker.setAnimation(google.maps.Animation.BOUNCE); // google.maps is a global object
+            setTimeout(function() {
+                    marker.setAnimation(null);
+     
+                }, 1500);
+
+            openinfoWindow(marker);
+
+   }
+
+   /*o open infoWindow*/
+
+   function openinfoWindow(marker){
+
+        infowindow.setContent(marker.title);
+        infowindow.open(map, marker);
+
+     }
+
+
 } // intiMap
 
 
@@ -137,17 +201,13 @@ $(".list-wrap").mouseover(function() {
 
         if (markers[i].marker.title === itemText) {
 
-            markers[i].marker.setVisible(false);
-
-            markers[i].marker.icon = blue_icon_url;
-
-            markers[i].marker.setVisible(true);
+              changeMarker(markers[i].marker, blue_icon_url);
         }
     }
 
 });
 
-/*Mouse Out*/
+/*List items on Mouse Out*/
 $(".list-wrap").mouseout(function() {
 
     var itemText = ($(this).text().trim()); // get content from selected element 
@@ -155,33 +215,21 @@ $(".list-wrap").mouseout(function() {
     for (var i = 0; i < markers.length; i++) {
 
         if (markers[i].marker.title === itemText) {
-            markers[i].marker.setAnimation(null);
-
-            markers[i].marker.setVisible(false);
-
-            markers[i].marker.icon = red_icon_url;
-
-            markers[i].marker.setVisible(true);
+            changeMarker(markers[i].marker, red_icon_url);
+           
         }
     }
-
 });
 
-$(".list-wrap").click(function() {
+/* change marker style*/
 
-    var itemText = ($(this).text().trim()); // get content from selected element
-    for (var i = 0; i < markers.length; i++) {
+ function changeMarker(marker, url){
 
-        if (markers[i].marker.title === itemText) {
+         marker.setVisible(false);
 
-          if (markers[i].marker.getAnimation() !== null) {
-               markers[i].marker.setAnimation(null);
-        } else {
-              markers[i].marker.setAnimation(google.maps.Animation.BOUNCE); // why this works? not out of scope?
+         marker.icon = url;
 
-          }
+         marker.setVisible(true);
 
-        } // bounce
+ }
 
-    }
-});
