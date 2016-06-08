@@ -72,7 +72,8 @@ function initMap() {
     markers = [];
 
     var infowindow = new google.maps.InfoWindow({
-    content: "Hello , Im info."
+       content: "Hello , Im info.",
+       maxWidth:250
     });
 
 
@@ -146,24 +147,17 @@ function initMap() {
             console.log(data);
             console.log(typeof data);   
          
-            var title = "<h1>"+data[1]+"</h1>";
+            var title = "<h2>"+data[1]+"</h2>";
             var description = "<p>"+data[2]+"</p><br><hr>"
             var link  = '<a href="'+data[3]+'">Source from Wikipedia</a>'
             var content = title+description+link;
 
             openinfoWindow(marker,content);
-                            //   <h1></h1><br>
-                            // <hr><br>
-                            // <p></p>
-                            // <br>
-                            // <a href="">Source from Wikipedia</a>
               },//success
          error:function(){
 
-
-
              openinfoWindow(marker,"No data available for this place yet,please check later.");
-
+             setTimeout(function(){infowindow.close()},5000);
 
          }
         });// end of ajax
@@ -195,14 +189,13 @@ function initMap() {
         infowindow.setContent(content);
 
         infowindow.open(map, marker);
+        setTimeout(function(){infowindow.close()},15000);
      
 
      }
 
 
 } // intiMap
-
-
 
 
 /*Marker filter*/

@@ -15,7 +15,7 @@
     <div class="container">
 
           <div id="filter-container">
-               <input id ="input"  data-bind="textInput: textReceived, event: { keyup: filter }" />
+               <input placeholder="Try a name ..." id ="input"  data-bind="textInput: textReceived, event: { keyup: filter }" />
 
                <ul  class= "filter-list" data-bind="foreach:locations">
                  <li id="" class="list-wrap"   data-bind="visible: show ,attr: { id: 'list_' + $index() }"> 

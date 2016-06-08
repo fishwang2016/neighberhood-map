@@ -11,16 +11,13 @@ body {
 #filter-container {
     position: absolute;
     color: white;
-    top: 50px;
-    left: 1%;
-    z-index: 5;
     background-color: black;
     padding: 5px;
-    border: 1px solid #999;
     text-align: left;
     line-height: 30px;
-    padding-left: 3;
-    opacity: 0.95;
+    height:100%;
+    width:250px;
+
 }
 .list-wrap {
     padding: 2px 5px;
@@ -40,5 +37,5 @@ body {
 }
 #map {
     height: 100%;
-    display: block;
+    left:250px;
 }
